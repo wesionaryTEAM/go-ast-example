@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"go/ast"
 	"go/parser"
+	"go/printer"
 	"go/token"
 	"log"
+	"os"
 )
 
 func main() {
@@ -34,5 +36,13 @@ func main() {
 		fmt.Println("func name: ", fn.Name)
 	}
 
-	fmt.Printf("%+v\n", node)
+	ast.Inspect(node, func(n ast.Node) bool {
+		ret, ok := n.(*ast.ReturnStmt)
+		if ok {
+			fmt.Println("return statement found on line.", fset.Position(ret.Pos()).Line)
+			printer.Fprint(os.Stdout, fset, ret)
+			return true
+		}
+		return true
+	})
 }
