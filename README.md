@@ -3,6 +3,7 @@ Sample and notes for go abstract tree parsing and modification.
 
 #### Reference Tutorials:
 - Go Ast Traversal [here](https://zupzup.org/go-ast-traversal/)
+- Go Ast Manipulation [here](https://www.zupzup.org/ast-manipulation-go/)
 
 #### Packages
 - `go/token`: Defines constants representing the lexical tokens of the go programming language and basic operations on tokens (printing, predicates)
